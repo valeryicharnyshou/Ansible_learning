@@ -7,7 +7,13 @@
     apt:
       name: chrony
       state: present
-  -name: Installation of net-tools
+
+  - name: Installation of net-tools
     apt:
       name: net-tools
+      state: present
+
+  - name: Install htop
+    apt:
+      name: htop
       state: present
