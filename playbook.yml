@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+  - name: Installation of chrony
+    apt:
+      name: chrony
+      state: present
