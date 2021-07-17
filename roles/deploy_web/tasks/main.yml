@@ -1,0 +1,20 @@
+---
+# tasks file for deploy_web
+- block:
+  - name: Installation of web server for RedHat
+    yum: name=httpd state=present
+  - name: Start and enable web-service
+    service: name=httpd state=started enabled=yes
+  when: ansible_os_family == "RedHat"
+
+- name: Copy files to web server
+  copy:
+    src: "{{ item }}"
+    dest: "{{ dest_folder }}"
+    mode: 0555
+  loop:
+    - "index.html"
+    - "DevOps-Logo.png"
+  notify:
+    - Restart of web-service for RedHat
+    - Restart of web-service for Debian
