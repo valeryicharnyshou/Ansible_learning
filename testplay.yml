@@ -1,0 +1,7 @@
+---
+- name: Test playbook with Roles
+  hosts: all
+  become: yes
+
+  roles:
+    - { role: deploy_web, when: ansible_system == 'Linux' }
